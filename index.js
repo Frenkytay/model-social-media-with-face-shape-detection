@@ -150,6 +150,7 @@ app.get("/profile-job-page" , async(req ,res) =>{
 JOIN user u ON u.UserId = f.followeeId  WHERE f.followeeId = ${userId}`)
  
     res.render("profilePageJob.ejs", { data: result  , jobs: jobs , following: following[0][0] , follower: follower[0][0]});
+
   } catch (error) {
     console.log(error)
   }
@@ -275,7 +276,7 @@ app.post("/login", async (req, res) => {
       return res.status(400).json({ message: "User Not Found" });
     }
     res.cookie("userId", result.UserId);
-    res.redirect("/activity");
+    res.redirect("/");
     // return res.status(400).json(result.UserId);
   } catch (error) {
     console.log(error);
